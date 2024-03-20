@@ -1,3 +1,13 @@
 import { Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
+import { MapComponent } from './components/map/map.component';
+import { FullCalendarComponent } from './components/full-calendar/full-calendar.component';
+import { GraphicsComponent } from './components/graphics/graphics.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+    { path: 'home', component: HomeComponent },
+    { path: 'mapa', component: MapComponent },
+    { path: 'calendario', component: FullCalendarComponent },
+    { path: 'graficos', component: GraphicsComponent },
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
+];
