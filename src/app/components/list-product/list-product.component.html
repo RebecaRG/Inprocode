@@ -1,3 +1,45 @@
 <div class="container">
-    <h4>LISTADO DE JUEGOS DE MESA</h4>
+    <h4 class="my-3">LISTADO DE JUEGOS DE MESA</h4>
+    <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-warning my-3" [routerLink]="['/incluir']">Añadir producto</button>
+        </div>
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-dark">
+            <th scope="col">Título</th>
+            <th scope="col">Editorial</th>
+            <th scope="col">Jugadores/as</th>
+            <th scope="col">Tiempo</th>
+            <th scope="col">Edad</th>
+            <th scope="col"></th>
+            
+            <!-- OTRAS POSIBLES COLUMNAS:
+                <th scope="col">Editorial</th>
+                <th scope="col">Autor/a</th>
+                <th scope="col">Ilustrador/a</th> -->
+            
+            
+          </tr>
+        </thead>
+        <tbody >
+            @for(juego of listProducts; track $index){
+    
+          <tr class="table-default">
+            <td scope="row"><strong>{{juego.titulo}}</strong> ({{juego.fechaPublicacion}})</td>
+            <td>{{juego.editorial}} </td>
+            <td>{{juego.participantesMin}} - {{juego.participantesMax}} </td>
+            <td>{{juego.duracionMinutos}} minutos</td>
+            <td>+ {{juego.edadMin}} años</td>
+            <td>
+                <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-secondary btn-sm me-2" [routerLink]="['/editar', juego.id]">Editar</button>
+            <button type="button" class="btn btn-secondary btn-sm">Eliminar</button>
+        </div>
+        </td>
+                
+        </tr>
+        }
+
+        </tbody>
+      </table>
 </div>
