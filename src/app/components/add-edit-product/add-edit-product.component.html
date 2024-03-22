@@ -1,1 +1,123 @@
-<p>add-edit-product works!</p>
+<div class="d-flex justify-content-center my-5">
+    <div
+        class="card text-white bg-light mb-3 col-11 col-sm-10 col-lg-9 col-xl-8 col-xxl-6 mx-auto border border-0 shadow">
+        <div class="card-header text-center bg-secondary">
+            <strong>AÑADIR JUEGO DE MESA</strong>
+        </div>
+        <div class="card-body p-4">
+            <form [formGroup]="addForm" (ngSubmit)="addProduct()">
+                <div class="form-group">
+                    <input type="text" class="form-control my-2" placeholder="Título" formControlName="titulo" />
+                    <div class="text-danger mt-1" [hidden]="title.valid || title.pristine">
+                        <small>
+                            @if(title.errors?.['required']){ Debes introducir el título
+                            }</small>
+                        <small>
+                            @if(title.errors?.['pattern']){ Introduce un título válido
+                            }</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control my-2" placeholder="Año de publicación"
+                        formControlName="fechaPublicacion" />
+                    <div class="text-danger mt-1" [hidden]="year.valid || year.pristine">
+                        <small>
+                            @if(year.errors?.['required']){ Debes introducir el año de
+                            publicación }</small>
+                        <small>
+                            @if(year.errors?.['pattern']){ Introduce un año válido }</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control my-2" placeholder="Editorial" formControlName="editorial" />
+                    <div class="text-danger mt-1" [hidden]="editorial.valid || editorial.pristine">
+                        <small>
+                            @if(editorial.errors?.['required']){ Debes introducir la editorial
+                            }</small>
+                        <small>
+                            @if(editorial.errors?.['pattern']){ Introduce una editorial válida
+                            }</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control my-2" placeholder="Autor/a o autores/as"
+                        formControlName="autoria" />
+                    <div class="text-danger mt-1" [hidden]="author.valid || author.pristine">
+                        <small>
+                            @if(author.errors?.['required']){ Debes introducir el nombre o
+                            nombres }</small>
+                        <small>
+                            @if(author.errors?.['pattern']){ Introduce el nombre y apellido
+                            separado por comas si hay más de uno/a }</small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control my-2" placeholder="Ilustrador/a o ilustradores/as"
+                        formControlName="ilustracion" />
+                    <div class="text-danger mt-1" [hidden]="illustration.valid || illustration.pristine">
+                        <small>
+                            @if(illustration.errors?.['required']){ Debes introducir el nombre
+                            o nombres }</small>
+                        <small>
+                            @if(illustration.errors?.['pattern']){ Introduce el nombre y
+                            apellido separado por comas si hay más de uno/a }</small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="number" class="form-control my-2" placeholder="Número mínimos de jugadores/as"
+                        formControlName="participantesMin" />
+                    <div class="text-danger mt-1" [hidden]="minPlayers.valid || minPlayers.pristine">
+                        <small>
+                            @if(minPlayers.errors?.['required']){ Debes introducir los
+                            jugadores mínimos }</small>
+                        <small>
+                            @if(minPlayers.errors?.['pattern']){ Introduce un número }</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control my-2" placeholder="Número màximo de jugadores/as"
+                        formControlName="participantesMax" />
+                    <div class="text-danger mt-1" [hidden]="maxPlayers.valid || maxPlayers.pristine">
+                        <small>
+                            @if(maxPlayers.errors?.['required']){ Debes introducir los
+                            jugadores máximos }</small>
+                        <small>
+                            @if(maxPlayers.errors?.['pattern']){ Introduce un número }</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control my-2" placeholder="Tiempo de duración (minutos)"
+                        formControlName="duracionMinutos" />
+                    <div class="text-danger mt-1" [hidden]="time.valid || time.pristine">
+                        <small>
+                            @if(time.errors?.['required']){ Debes introducir el tiempo
+                            necesario para jugar }</small>
+                        <small>
+                            @if(time.errors?.['pattern']){ Introduce el número en minutos
+                            }</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control my-2" placeholder="Edad recomendada"
+                        formControlName="edadMin" />
+                    <div class="text-danger mt-1" [hidden]="age.valid || age.pristine">
+                        <small>
+                            @if(age.errors?.['required']){ Debes introducir el mínimo de años
+                            }</small>
+                        <small> @if(age.errors?.['pattern']){ Introduce un número }</small>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success me-2" [disabled]="addForm.invalid">
+                        Guardar
+                    </button>
+                    <button type="button" class="btn btn-info ms-2" [routerLink]="['/home']">
+                        Volver
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
