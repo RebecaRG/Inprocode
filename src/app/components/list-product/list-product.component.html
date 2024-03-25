@@ -25,11 +25,11 @@
             @for(juego of listProducts; track $index){
     
           <tr class="table-default">
-            <td scope="row"><strong>{{juego.titulo}}</strong> ({{juego.fechaPublicacion}})</td>
+            <td scope="row"><strong>{{juego.titulo}}</strong> ({{juego.fecha_publicacion}})</td>
             <td>{{juego.editorial}} </td>
-            <td>{{juego.participantesMin}} - {{juego.participantesMax}} </td>
-            <td>{{juego.duracionMinutos}} minutos</td>
-            <td>+ {{juego.edadMin}} años</td>
+            <td>{{juego.participantes_min}} - {{juego.participantes_max}} </td>
+            <td>{{juego.duracion_minutos}} minutos</td>
+            <td>+ {{juego.edad_min}} años</td>
             <td>
                 <div class="d-flex justify-content-end">
             <button type="button" class="btn btn-secondary btn-sm me-2" [routerLink]="['/editar', $index+1]">Editar</button>

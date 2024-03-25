@@ -72,15 +72,15 @@ constructor(private fb : FormBuilder, private router: Router) {
     const product : Product = {
       // EAN: number,
       titulo: this.addForm.value.titulo,
-      fechaPublicacion: this.addForm.value.fechaPublicacion,
+      fecha_publicacion: this.addForm.value.fechaPublicacion,
       // descripcion: string,
       editorial: this.addForm.value.editorial,
       autoria: this.addForm.value.autoria,
       ilustracion: this.addForm.value.ilustracion,
-      participantesMin: this.addForm.value.participantesMin,
-      participantesMax: this.addForm.value.participantesMax,
-      duracionMinutos: this.addForm.value.duracionMinutos,
-      edadMin:  this.addForm.value.edadMin,
+      participantes_min: this.addForm.value.participantesMin,
+      participantes_max: this.addForm.value.participantesMax,
+      duracion_minutos: this.addForm.value.duracionMinutos,
+      edad_min:  this.addForm.value.edadMin,
     }
     console.table(product);
     this.router.navigate(['/home']);
