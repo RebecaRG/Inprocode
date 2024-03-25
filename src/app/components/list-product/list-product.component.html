@@ -1,3 +1,5 @@
+@if(loading){<app-progress-bar></app-progress-bar>}
+@else{
 <div class="container">
     <h4 class="my-3">LISTADO DE JUEGOS DE MESA</h4>
     <div class="d-flex justify-content-end">
@@ -33,7 +35,7 @@
             <td>
                 <div class="d-flex justify-content-end">
             <button type="button" class="btn btn-secondary btn-sm me-2" [routerLink]="['/editar', $index+1]">Editar</button>
-            <button type="button" class="btn btn-secondary btn-sm">Eliminar</button>
+            <button (click)="deleteProduct(juego.id_juego!)" type="button" class="btn btn-secondary btn-sm">Eliminar</button>
         </div>
         </td>
                 
@@ -43,3 +45,4 @@
         </tbody>
       </table>
 </div>
+}

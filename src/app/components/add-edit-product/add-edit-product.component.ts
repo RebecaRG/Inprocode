@@ -71,6 +71,7 @@ constructor(private fb : FormBuilder, private router: Router) {
   addProduct(){
     const product : Product = {
       // EAN: number,
+      id_juego: 0,
       titulo: this.addForm.value.titulo,
       fecha_publicacion: this.addForm.value.fechaPublicacion,
       // descripcion: string,

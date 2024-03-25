@@ -1,5 +1,6 @@
 export interface Product {
     // EAN: number,
+    id_juego?: number,
     titulo: string,
     fecha_publicacion: number,
     // descripcion: string,

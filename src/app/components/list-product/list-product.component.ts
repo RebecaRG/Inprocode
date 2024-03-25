@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../interfaces/product';
 import { RouterLink} from '@angular/router';
 import { ProductService } from '../../services/product.service';
+import { ProgressBarComponent } from '../../shared/progress-bar/progress-bar.component';
 
 
 @Component({
   selector: 'app-list-product',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, ProgressBarComponent],
   templateUrl: './list-product.component.html',
   styleUrl: './list-product.component.scss'
 })
@@ -47,6 +48,7 @@ export class ListProductComponent implements OnInit{
     //   // url: "https://tranjisgames.com/tienda/juego-de-mesa-virus/",
     // }
   ]
+  loading: boolean = false;
 
   constructor(private _productService: ProductService){}
 
@@ -55,8 +57,18 @@ export class ListProductComponent implements OnInit{
   }
 
   getListProducts(){
-    this._productService.getListProducts().subscribe((data) => {
+    this.loading = true;
+    this._productService.getListProducts().subscribe((data: Product[]) => {
       this.listProducts = data;
+      this.loading = false;
+    })
+    
+  }
+
+  deleteProduct(id: number){
+    this.loading = true;
+    this._productService.deleteProduct(id).subscribe(() => {
+      this.getListProducts();
     })
   }
 
