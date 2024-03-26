@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { LayoutComponent } from './components/layout/layout.component';
 import { HttpClientModule } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
