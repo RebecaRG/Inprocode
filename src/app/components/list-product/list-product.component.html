@@ -5,7 +5,7 @@
     <div class="d-flex justify-content-end">
         <button type="button" class="btn btn-warning my-3" [routerLink]="['/incluir']">Añadir producto</button>
         </div>
-    @if(listProducts.length == 0){
+    @if(listProducts.length > 0){
     <table class="table table-hover">
         <thead>
             <tr class="table-dark">
