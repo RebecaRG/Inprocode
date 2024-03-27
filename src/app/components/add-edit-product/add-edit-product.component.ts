@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { ProgressBarComponent } from '../../shared/progress-bar/progress-bar.component';
 import { ToastrService } from 'ngx-toastr';
+import { first } from 'rxjs';
 
 
 @Component({
@@ -17,6 +18,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AddEditProductComponent implements OnInit {
   loading: boolean = false;
+  id: number;
+  operacion: string = "AÑADIR "
+  bgColor: string = "bg-secondary";
 
   get title(){
     return this.addForm.get('titulo') as FormControl;
@@ -56,7 +60,11 @@ get age(){
 
 addForm: FormGroup;
 
-constructor(private fb : FormBuilder, private router: Router, private _productService: ProductService, private toastr: ToastrService) { 
+constructor(private fb : FormBuilder, 
+  private router: Router, 
+  private _productService: ProductService, 
+  private toastr: ToastrService,
+  private aRouter: ActivatedRoute) { 
   this.addForm = this.fb.group({
     titulo : new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z ]{3,}$/)]),
     fechaPublicacion : new FormControl('', [Validators.required, Validators.pattern(/^[1-2][0-9]{3}$/)]),
@@ -67,11 +75,20 @@ constructor(private fb : FormBuilder, private router: Router, private _productSe
     participantesMax : new FormControl('', [Validators.required, Validators.pattern(/^(100|[1-9]?[0-9])$/)]),
     duracionMinutos : new FormControl('', [Validators.required, Validators.pattern(/^([1-9]|[1-9][0-9]|1\d{2}|2\d{2}|300)$/)]),
     edadMin : new FormControl('', [Validators.required, Validators.pattern(/^(100|[1-9]?[0-9])$/)]),
-    
   })
+  this.id = Number(aRouter.snapshot.paramMap.get('id'));
+  
+  console.log(this.id);
 }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    if(this.id != 0){
+      this.operacion = "EDITAR ";
+      this.bgColor = "bg-danger";
+      this.getProduct(this.id);
+    }
+  }
 
   addProduct(){
     const product : Product = {
@@ -88,13 +105,44 @@ constructor(private fb : FormBuilder, private router: Router, private _productSe
       duracion_minutos: this.addForm.value.duracionMinutos,
       edad_min:  this.addForm.value.edadMin,
     }
-
     this.loading = true;
-    this._productService.saveProduct(product).subscribe(() => {
-    this.loading = false;
-    this.toastr.success(`El producto ${product.titulo} se añadido con éxito`, 'Producto añadido');
-    this.router.navigate(['/home']);
-    })
+    if(this.id != 0){
+      product.id_juego = this.id;
+      this._productService.updateProduct(this.id, product).subscribe(() => {
+        this.toastr.success(`El producto ${product.titulo} se ha actualizado con éxito`, 'Producto actualizado');
+        this.loading = false;
+        this.router.navigate(['/']);
+      })
     
+  }else{
+    this._productService.saveProduct(product).subscribe(() => {
+      this.toastr.success(`El producto ${product.titulo} se añadido con éxito`, 'Producto añadido');
+      this.loading = false;
+      this.router.navigate(['/']);
+    })
+    }
+  }
+
+
+
+
+getProduct(id:number){
+  this.loading = true;
+  this._productService.getProduct(id).subscribe((data: Product) => {
+    console.log(data);
+    this.loading = false;
+    this.addForm.patchValue({
+      titulo: data.titulo,
+      fechaPublicacion: data.fecha_publicacion,
+      editorial: data.editorial,
+      autoria: data.autoria,
+      ilustracion: data.ilustracion,
+      participantesMin: data.participantes_min,
+      participantesMax: data.participantes_max,
+      duracionMinutos: data.duracion_minutos,
+      edadMin: data.edad_min
+})
+})
 }
-}
+  
+  }

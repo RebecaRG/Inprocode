@@ -3,8 +3,8 @@
 <div class="d-flex justify-content-center my-5">
     <div
         class="card text-white bg-light mb-3 col-11 col-sm-10 col-lg-9 col-xl-8 col-xxl-6 mx-auto border border-0 shadow">
-        <div class="card-header text-center bg-secondary">
-            <strong>AÑADIR JUEGO DE MESA</strong>
+        <div class="card-header text-center {{bgColor}}" >
+            <strong>{{ operacion }} JUEGO DE MESA</strong>
         </div>
         <div class="card-body p-4">
             <form [formGroup]="addForm" (ngSubmit)="addProduct()">
