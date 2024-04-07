@@ -1,5 +1,5 @@
-export interface Shop{
-    id_tienda?: number,
+export interface Category{
+    id?: number,
     nombre: string,
     latitud: number,
     longitud: number,

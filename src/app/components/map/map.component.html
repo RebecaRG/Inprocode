@@ -1,5 +1,15 @@
 <div class="container">
-    <h4 class="my-3">TIENDAS</h4>
-    <p>Descubre tu próxima aventura lúdica en el mapa a continuación, donde hemos seleccionado las mejores tiendas de juegos. Encuentra fácilmente ubicaciones cercanas para explorar las últimas novedades y clásicos imprescindibles. ¡El mundo de los juegos te espera!</p>
-<div id="map"></div>
+    <h4 class="my-3">MAPA</h4>
+    <p>Desde Barcelona inicia nuestra aventura lúdica, guiándote por un mapa de diversión sin límites. Tiendas con tesoros de juegos, bibliotecas que prestan más que libros, bares donde la estrategia se encuentra con la sociabilidad, y asociaciones para conectar con la comunidad. Este es solo el comienzo; soñamos con expandir este mapa a cada rincón del mundo, invitándote a descubrir y disfrutar de la magia de los juegos de mesa dondequiera que estés.</p>
+    <div class="map-container">
+    <div id="map" class="map-container">
+    </div>
+    <select class="form-select map-select shadow" [(ngModel)]="selectedCategory" (change)="filterMarkers()">
+        <option selected>SELECCIONA CATEGORÍA</option>
+        @for(categoria of categorias; track $index){
+            <option [value]="categoria">{{categoria}}</option>
+    }
+    </select>
+    </div>
 </div>
+
