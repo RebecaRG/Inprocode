@@ -3,8 +3,14 @@
 }
 
 #map{
-    height: 75vh;
+    height: 50vh;
     width: 100%;
+}
+
+@media (min-width: 992px) {
+    #map{
+        height: 75vh;
+    }
 }
 
 .map-select{
