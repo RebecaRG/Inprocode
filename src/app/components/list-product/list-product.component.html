@@ -2,54 +2,54 @@
 @else{
 <div class="container">
     <h4 class="my-3">LISTADO DE JUEGOS DE MESA</h4>
+    <p>Hola, amantes de los juegos de mesa. Aquí está vuestro espacio digital, donde cada juego cuenta. Podéis agregar,
+        editar detalles o retirar lo que ya no resuena. Si tenéis un favorito que creéis que todos deberían conocer,
+        añadidlo. ¿Encontrasteis un error en una descripción? Corregidlo. Juntas y juntos, vamos a construir la
+        colección más completa y actualizada de juegos de mesa en castellano, en un ambiente lleno de diversión y
+        colaboración.</p>
     <div class="d-flex justify-content-end">
-        <button type="button" class="btn btn-warning my-3" [routerLink]="['/incluir']">Añadir producto</button>
-        </div>
+        <button type="button" class="btn btn-danger my-3" [routerLink]="['/incluir']">Añadir producto</button>
+    </div>
     @if(listProducts.length > 0){
     <table class="table table-hover">
         <thead>
             <tr class="table-dark">
-            <th scope="col">Título</th>
-            <th scope="col">Editorial</th>
-            <th scope="col">Jugadores/as</th>
-            <th scope="col">Tiempo</th>
-            <th scope="col">Edad</th>
-            <th scope="col"></th>
-            
-            <!-- OTRAS POSIBLES COLUMNAS:
+                <th scope="col">Título</th>
                 <th scope="col">Editorial</th>
-                <th scope="col">Autor/a</th>
-                <th scope="col">Ilustrador/a</th> -->
-            
-            
-          </tr>
+                <th scope="col">Personas</th>
+                <th scope="col">Minutos</th>
+                <th scope="col">Edad</th>
+                <th scope="col"></th>
+            </tr>
         </thead>
-        <tbody >
+        <tbody>
             @for(juego of listProducts; track $index){
-    
-          <tr class="table-default">
-            <td scope="row"><strong>{{juego.titulo}}</strong> ({{juego.fecha_publicacion}})</td>
-            <td>{{juego.editorial}} </td>
-            <td>{{juego.participantes_min}} - {{juego.participantes_max}} </td>
-            <td>{{juego.duracion_minutos}} minutos</td>
-            <td>+ {{juego.edad_min}} años</td>
-            <td>
-                <div class="d-flex justify-content-end">
-            <button type="button" class="btn btn-secondary btn-sm me-2" [routerLink]="['/editar', juego.id_juego]">Editar</button>
-            <button (click)="deleteProduct(juego.id_juego!)" type="button" class="btn btn-secondary btn-sm">Eliminar</button>
-        </div>
-        </td>
-                
-        </tr>
-        }
+
+            <tr class="table-default">
+                <td scope="row"><strong>{{juego.titulo}}</strong> ({{juego.fecha_publicacion}})</td>
+                <td>{{juego.editorial}} </td>
+                <td>{{juego.participantes_min}} - {{juego.participantes_max}} </td>
+                <td>{{juego.duracion_minutos}}</td>
+                <td>+ {{juego.edad_min}}</td>
+                <td>
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-secondary btn-sm me-2"
+                            [routerLink]="['/editar', juego.id_juego]">Editar</button>
+                        <button (click)="deleteProduct(juego.id_juego!)" type="button"
+                            class="btn btn-warning btn-sm">Quitar</button>
+                    </div>
+                </td>
+
+            </tr>
+            }
 
         </tbody>
-      </table>
+    </table>
     }
     @else{
-        <div class="alert alert-warning" role="alert">
-            <h5 class="my-4 mx-2">❌ No hay productos para mostrar</h5>
-          </div>
+    <div class="alert alert-warning" role="alert">
+        <h5 class="my-4 mx-2">❌ No hay productos para mostrar</h5>
+    </div>
     }
 </div>
 }
