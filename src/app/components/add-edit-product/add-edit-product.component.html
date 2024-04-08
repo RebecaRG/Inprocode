@@ -6,10 +6,11 @@
         <div class="card-header text-center {{bgColor}}" >
             <strong>{{ operacion }} JUEGO DE MESA</strong>
         </div>
-        <div class="card-body p-4">
+        <div class="card-body p-4 text-body-secondary">
             <form [formGroup]="addForm" (ngSubmit)="addProduct()">
                 <div class="form-group">
-                    <input type="text" class="form-control my-2" placeholder="Título" formControlName="titulo" />
+                    <label for="titulo">Título</label>
+                    <input type="text" class="form-control my-2" formControlName="titulo" />
                     <div class="text-danger mt-1" [hidden]="title.valid || title.pristine">
                         <small>
                             @if(title.errors?.['required']){ Debes introducir el título
@@ -20,7 +21,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="number" class="form-control my-2" placeholder="Año de publicación"
+                    <label for="fechaPublicacion">Año de publicación</label>
+                    <input type="number" class="form-control my-2" 
                         formControlName="fechaPublicacion" />
                     <div class="text-danger mt-1" [hidden]="year.valid || year.pristine">
                         <small>
@@ -31,7 +33,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control my-2" placeholder="Editorial" formControlName="editorial" />
+                    <label for="editorial">Editorial</label>
+                    <input type="text" class="form-control my-2" formControlName="editorial" />
                     <div class="text-danger mt-1" [hidden]="editorial.valid || editorial.pristine">
                         <small>
                             @if(editorial.errors?.['required']){ Debes introducir la editorial
@@ -42,7 +45,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control my-2" placeholder="Autor/a o autores/as"
+                    <label for="autoria">Autor/a o autores/as</label>
+                    <input type="text" class="form-control my-2"
                         formControlName="autoria" />
                     <div class="text-danger mt-1" [hidden]="author.valid || author.pristine">
                         <small>
@@ -55,7 +59,8 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control my-2" placeholder="Ilustrador/a o ilustradores/as"
+                    <label for="ilustracion">Ilustrador/a o ilustradores/as</label>
+                    <input type="text" class="form-control my-2" 
                         formControlName="ilustracion" />
                     <div class="text-danger mt-1" [hidden]="illustration.valid || illustration.pristine">
                         <small>
@@ -68,7 +73,8 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="number" class="form-control my-2" placeholder="Número mínimos de jugadores/as"
+                    <label for="participantesMin">Número mínimos de jugadores/as</label>
+                    <input type="number" class="form-control my-2" 
                         formControlName="participantesMin" />
                     <div class="text-danger mt-1" [hidden]="minPlayers.valid || minPlayers.pristine">
                         <small>
@@ -79,7 +85,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="number" class="form-control my-2" placeholder="Número màximo de jugadores/as"
+                    <label for="participantesMax">Número máximo de jugadores/as</label>
+                    <input type="number" class="form-control my-2" 
                         formControlName="participantesMax" />
                     <div class="text-danger mt-1" [hidden]="maxPlayers.valid || maxPlayers.pristine">
                         <small>
@@ -90,7 +97,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="number" class="form-control my-2" placeholder="Tiempo de duración (minutos)"
+                    <label for="duracionMinutos">Tiempo de duración (minutos)</label>
+                    <input type="number" class="form-control my-2" 
                         formControlName="duracionMinutos" />
                     <div class="text-danger mt-1" [hidden]="time.valid || time.pristine">
                         <small>
@@ -102,7 +110,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="number" class="form-control my-2" placeholder="Edad recomendada"
+                    <label for="edadMin">Edad recomendada</label>
+                    <input type="number" class="form-control my-2"
                         formControlName="edadMin" />
                     <div class="text-danger mt-1" [hidden]="age.valid || age.pristine">
                         <small>
