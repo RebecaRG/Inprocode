@@ -35,7 +35,5 @@ export class CategoriesService {
     return this.http.get<Category[]>(`${this.myAppUrl}api/asociaciones/`);
   }
 
-
-
 }
 
