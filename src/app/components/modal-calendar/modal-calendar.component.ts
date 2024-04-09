@@ -7,33 +7,33 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-modal-calendar',
   standalone: true,
-  imports: [ReactiveFormsModule, ],
+  imports: [ReactiveFormsModule,],
   templateUrl: './modal-calendar.component.html',
   styleUrls: ['./modal-calendar.component.scss']
 })
 export class ModalCalendarComponent implements OnInit {
-  @Input() event: any; 
+  @Input() event: any;
   @Input() modalRef!: NgbModalRef;
 
   eventForm: FormGroup;
 
   loading = false;
 
-  get title(){
+  get title() {
     return this.eventForm.get('titulo') as FormControl;
   }
 
-  get place (){
+  get place() {
     return this.eventForm.get('lugar') as FormControl;
   }
 
-  get description(){
+  get description() {
     return this.eventForm.get('descripcion') as FormControl;
   }
 
   constructor(private fb: FormBuilder, private eventService: EventService, private toastr: ToastrService,) {
     this.eventForm = this.fb.group({
-      titulo : new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9\s,.'-/áéíóúÁÉÍÓÚñÑ]{3,}$/)]),
+      titulo: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9\s,.'-/áéíóúÁÉÍÓÚñÑ]{3,}$/)]),
       lugar: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9\s,.'-/áéíóúÁÉÍÓÚñÑ]{3,}$/)]),
       descripcion: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9\s,.'-/áéíóúÁÉÍÓÚñÑ]{3,}$/)])
     });
@@ -70,5 +70,5 @@ export class ModalCalendarComponent implements OnInit {
         }
       });
     }
-}
+  }
 }

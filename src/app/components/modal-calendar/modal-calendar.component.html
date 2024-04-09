@@ -1,6 +1,7 @@
 <div class="modal-header  bg-warning">
   <h4 class="modal-title text-white" id="modal-basic-title">Actualizar Evento</h4>
-  <button type="button" class="btn-close text-black" aria-label="Close" (click)="modalRef.dismiss('Cross click')"></button>
+  <button type="button" class="btn-close text-black" aria-label="Close"
+    (click)="modalRef.dismiss('Cross click')"></button>
 </div>
 <div class="modal-body text-body-secondary">
   <form [formGroup]="eventForm" (ngSubmit)="updateEvent()">
@@ -9,30 +10,30 @@
       <input id="titulo" class="form-control" formControlName="titulo" />
       <div class="text-danger mt-1" [hidden]="title.valid || title.pristine">
         <small>
-            @if(title.errors?.['required']){ Debes introducir el nombre}</small>
+          @if(title.errors?.['required']){ Debes introducir el nombre}</small>
         <small>
-            @if(title.errors?.['pattern']){ Introduce un nombre válido }</small>
-    </div>
+          @if(title.errors?.['pattern']){ Introduce un nombre válido }</small>
+      </div>
     </div>
     <div class="mb-3">
       <label for="lugar">Dirección</label>
       <input id="lugar" class="form-control" formControlName="lugar" />
       <div class="text-danger mt-1" [hidden]="place.valid || place.pristine">
         <small>
-            @if(place.errors?.['required']){ Debes introducir la dirección}</small>
+          @if(place.errors?.['required']){ Debes introducir la dirección}</small>
         <small>
-            @if(place.errors?.['pattern']){ Introduce una dirección válida }</small>
-    </div>
+          @if(place.errors?.['pattern']){ Introduce una dirección válida }</small>
+      </div>
     </div>
     <div class="mb-3">
       <label for="descripcion">Descripción</label>
       <textarea id="descripcion" class="form-control" formControlName="descripcion"></textarea>
       <div class="text-danger mt-1" [hidden]="description.valid || description.pristine">
         <small>
-            @if(description.errors?.['required']){ Debes introducir una descipción}</small>
+          @if(description.errors?.['required']){ Debes introducir una descipción}</small>
         <small>
-            @if(description.errors?.['pattern']){ Introduce una descripción válida }</small>
-    </div>
+          @if(description.errors?.['pattern']){ Introduce una descripción válida }</small>
+      </div>
     </div>
     <button type="submit" class="btn btn-outline-dark" [disabled]="eventForm.invalid">Guardar</button>
   </form>

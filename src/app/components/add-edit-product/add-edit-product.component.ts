@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators, ValidationErrors, AbstractControl  } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators, ValidationErrors, AbstractControl } from '@angular/forms';
 import { Product } from '../../interfaces/product';
 import { Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
@@ -63,11 +63,11 @@ export class AddEditProductComponent implements OnInit {
   validateMinMax(control: AbstractControl): ValidationErrors | null {
     const min = control.get('participantesMin');
     const max = control.get('participantesMax');
-  
+
     if (min && max && min.value && max.value) {
       return min.value < max.value ? null : { minMaxInvalid: true };
     }
-  
+
     return null;
   }
 
@@ -133,7 +133,6 @@ export class AddEditProductComponent implements OnInit {
   getProduct(id: number) {
     this.loading = true;
     this._productService.getProduct(id).subscribe((data: Product) => {
-      console.log(data);
       this.loading = false;
       this.addForm.patchValue({
         titulo: data.titulo,

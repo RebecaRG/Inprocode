@@ -22,7 +22,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
   calendarOptions: any;
   private eventsSubscription!: Subscription;
 
-  constructor(private eventService: EventService, private modalService: NgbModal) {}
+  constructor(private eventService: EventService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.eventsSubscription = this.eventService.events$.subscribe(events => {
@@ -43,7 +43,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
       eventClick: (info: any) => {
         this.openModal(info.event);
       },
-      eventMouseEnter: (mouseEnterInfo:any) => {
+      eventMouseEnter: (mouseEnterInfo: any) => {
         tippy(mouseEnterInfo.el, {
           content: `
           <br>
@@ -51,8 +51,8 @@ export class CalendarComponent implements OnInit, OnDestroy {
           <hr>
           <strong>ℹ</strong> ${mouseEnterInfo.event.extendedProps.descripcion}
           <br> <br>`,
-          allowHTML: true, 
-          placement: 'top', 
+          allowHTML: true,
+          placement: 'top',
         });
       }
     };
@@ -81,8 +81,8 @@ export class CalendarComponent implements OnInit, OnDestroy {
     const modalRef = this.modalService.open(ModalCalendarComponent);
 
     const eventForModal = {
-      id: info.id, 
-      ...info.extendedProps 
+      id: info.id,
+      ...info.extendedProps
     };
 
     modalRef.componentInstance.event = eventForModal;

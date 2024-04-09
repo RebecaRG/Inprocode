@@ -64,14 +64,14 @@ export class GraphicsComponent implements OnInit, AfterViewInit {
           }
         }
       };
-      
+
       new Chart(document.getElementById('categoryChart') as HTMLCanvasElement, config);
     });
   }
 
   renderPieChartForAge() {
     this._productService.getListProducts().subscribe(products => {
-    
+
       const ageRanges = { '0-3': 0, '4-6': 0, '7-12': 0, '13-16': 0, '17-18': 0, '18+': 0 };
       products.forEach(product => {
         const age = product.edad_min;
@@ -82,10 +82,10 @@ export class GraphicsComponent implements OnInit, AfterViewInit {
         else if (age >= 17 && age <= 18) ageRanges['17-18']++;
         else ageRanges['18+']++;
       });
-      
+
       const totalProducts = products.length;
       const percentages = Object.values(ageRanges).map(count => (count / totalProducts) * 100);
-  
+
 
       const data = {
         labels: Object.keys(ageRanges),
@@ -111,38 +111,38 @@ export class GraphicsComponent implements OnInit, AfterViewInit {
           borderWidth: 1
         }]
       };
-  
+
       const config: ChartConfiguration<ChartType, number[], string> = {
         type: 'pie',
-        data, 
+        data,
         options: {
-      
+
           plugins: {
             legend: {
-              position: 'top', 
+              position: 'top',
             },
-        
+
           }
         }
       };
-      
+
       new Chart(document.getElementById('pieChartAge') as HTMLCanvasElement, config);
-      
+
     });
   }
 
   renderPieChartForPlaytime() {
     this._productService.getListProducts().subscribe(products => {
       const playtimeRanges = {
-        '15': 0, 
-        '30': 0, 
-        '45': 0, 
-        '60': 0, 
-        '90': 0, 
-        '240': 0, 
+        '15': 0,
+        '30': 0,
+        '45': 0,
+        '60': 0,
+        '90': 0,
+        '240': 0,
         '+240': 0
       };
-  
+
       products.forEach(product => {
         const time = product.duracion_minutos;
         if (time <= 15) playtimeRanges['15']++;
@@ -153,10 +153,10 @@ export class GraphicsComponent implements OnInit, AfterViewInit {
         else if (time > 90 && time <= 240) playtimeRanges['240']++;
         else playtimeRanges['+240']++;
       });
-  
+
       const totalProducts = products.length;
       const percentages = Object.values(playtimeRanges).map(count => (count / totalProducts) * 100);
-  
+
       const data = {
         labels: Object.keys(playtimeRanges),
         datasets: [{
@@ -183,7 +183,7 @@ export class GraphicsComponent implements OnInit, AfterViewInit {
           borderWidth: 1
         }]
       };
-  
+
       const config: ChartConfiguration<ChartType, number[], string> = {
         type: 'pie',
         data,
@@ -195,11 +195,11 @@ export class GraphicsComponent implements OnInit, AfterViewInit {
           }
         }
       };
-  
+
       new Chart(document.getElementById('pieChartPlaytime') as HTMLCanvasElement, config);
     });
   }
-  
+
 }
 
 
