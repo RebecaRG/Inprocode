@@ -68,7 +68,7 @@ export class MapComponent implements AfterViewInit {
         observable$ = this._categoriaService.getListAsociaciones();
         break;
       default:
-        console.log('Categoría no reconocida:', category);
+        this.loadAllCategories();
         return;
     }
 
@@ -129,8 +129,8 @@ export class MapComponent implements AfterViewInit {
   
     const el = document.createElement('div');
     el.className = 'marker';
-    el.innerHTML = categoryStyles[category] ? categoryStyles[category].icon : "<i class='fas fa-map-marker-alt'></i>"; // Ícono por defecto
-    el.style.backgroundColor = categoryStyles[category] ? categoryStyles[category].color : '#FFC107'; // Color por defecto
+    el.innerHTML = categoryStyles[category] ? categoryStyles[category].icon : "<i class='fas fa-map-marker-alt'></i>"; 
+    el.style.backgroundColor = categoryStyles[category] ? categoryStyles[category].color : '#FFC107'; 
     el.style.color = "white"; 
     el.style.fontSize = "20px"; 
     el.style.textAlign = "center"; 

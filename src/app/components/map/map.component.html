@@ -1,16 +1,19 @@
 <div class="container">
-    <h4 class="my-3">MAPA</h4>
-    <p>
-        Desde Barcelona, te presentamos un mundo de entretenimiento: tiendas de juegos, bibliotecas, bares estratégicos y redes comunitarias. Nuestro objetivo es globalizar esta experiencia, invitándote a explorar la magia de los juegos de mesa en todas partes.</p>
+  <h4 class="my-3">MAPA</h4>
+  <p>
+    Desde Barcelona, te presentamos un mundo de entretenimiento: tiendas de
+    juegos, bibliotecas, bares estratégicos y redes comunitarias. Nuestro
+    objetivo es globalizar esta experiencia, invitándote a explorar la magia de
+    los juegos de mesa en todas partes.
+    </p>
     <div class="map-container my-4">
-    <div id="map" class="map-container">
-    </div>
+    <div id="map" class="map-container"></div>
     <select class="form-select map-select shadow" [(ngModel)]="selectedCategory" (change)="filterMarkers()">
-        <option selected>SELECCIONA CATEGORÍA</option>
+        <option value>SELECCIONA CATEGORÍA</option>
         @for(categoria of categorias; track $index){
-            <option [value]="categoria">{{categoria}}</option>
-    }
+        <option [value]="categoria">{{ categoria }}</option>
+        }
+        <option value>todas</option>
     </select>
     </div>
 </div>
-
