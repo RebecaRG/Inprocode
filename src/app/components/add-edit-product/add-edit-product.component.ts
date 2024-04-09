@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators, ValidationErrors, AbstractControl  } from '@angular/forms';
 import { Product } from '../../interfaces/product';
 import { Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { ProgressBarComponent } from '../../shared/progress-bar/progress-bar.component';
 import { ToastrService } from 'ngx-toastr';
-import { first } from 'rxjs';
+
 
 
 @Component({
@@ -60,6 +60,17 @@ export class AddEditProductComponent implements OnInit {
 
   addForm: FormGroup;
 
+  validateMinMax(control: AbstractControl): ValidationErrors | null {
+    const min = control.get('participantesMin');
+    const max = control.get('participantesMax');
+  
+    if (min && max && min.value && max.value) {
+      return min.value < max.value ? null : { minMaxInvalid: true };
+    }
+  
+    return null;
+  }
+
   constructor(private fb: FormBuilder,
     private router: Router,
     private _productService: ProductService,
@@ -75,10 +86,9 @@ export class AddEditProductComponent implements OnInit {
       participantesMax: new FormControl('', [Validators.required, Validators.pattern(/^(100|[1-9]?[0-9])$/)]),
       duracionMinutos: new FormControl('', [Validators.required, Validators.pattern(/^([1-9]|[1-9][0-9]|1\d{2}|2\d{2}|300)$/)]),
       edadMin: new FormControl('', [Validators.required, Validators.pattern(/^(100|[1-9]?[0-9])$/)]),
-    })
+    }, { validators: this.validateMinMax });
     this.id = Number(aRouter.snapshot.paramMap.get('id'));
 
-    console.log(this.id);
   }
 
   ngOnInit(): void {
@@ -94,7 +104,6 @@ export class AddEditProductComponent implements OnInit {
     const product: Product = {
       titulo: this.addForm.value.titulo,
       fecha_publicacion: this.addForm.value.fechaPublicacion,
-      // descripcion: string,
       editorial: this.addForm.value.editorial,
       autoria: this.addForm.value.autoria,
       ilustracion: this.addForm.value.ilustracion,
