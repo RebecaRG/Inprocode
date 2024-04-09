@@ -72,7 +72,7 @@ export class GraphicsComponent implements OnInit, AfterViewInit {
   renderPieChartForAge() {
     this._productService.getListProducts().subscribe(products => {
     
-      const ageRanges = { '0-3': 0, '4-6': 0, '7-12': 0, '13-16': 0, '17-18': 0, '19+': 0 };
+      const ageRanges = { '0-3': 0, '4-6': 0, '7-12': 0, '13-16': 0, '17-18': 0, '18+': 0 };
       products.forEach(product => {
         const age = product.edad_min;
         if (age <= 3) ageRanges['0-3']++;
@@ -80,13 +80,13 @@ export class GraphicsComponent implements OnInit, AfterViewInit {
         else if (age >= 7 && age <= 12) ageRanges['7-12']++;
         else if (age >= 13 && age <= 16) ageRanges['13-16']++;
         else if (age >= 17 && age <= 18) ageRanges['17-18']++;
-        else ageRanges['19+']++;
+        else ageRanges['18+']++;
       });
       
       const totalProducts = products.length;
       const percentages = Object.values(ageRanges).map(count => (count / totalProducts) * 100);
   
-      // Paso 3: Crear el gráfico de pastel
+
       const data = {
         labels: Object.keys(ageRanges),
         datasets: [{
@@ -133,26 +133,25 @@ export class GraphicsComponent implements OnInit, AfterViewInit {
 
   renderPieChartForPlaytime() {
     this._productService.getListProducts().subscribe(products => {
-      // Definición de los rangos de tiempo de juego
       const playtimeRanges = {
-        '15 min': 0, 
-        '30 min': 0, 
-        '45 min': 0, 
-        '60 min': 0, 
-        '90 min': 0, 
-        '240 min': 0, 
-        '+240 min': 0
+        '15': 0, 
+        '30': 0, 
+        '45': 0, 
+        '60': 0, 
+        '90': 0, 
+        '240': 0, 
+        '+240': 0
       };
   
       products.forEach(product => {
         const time = product.duracion_minutos;
-        if (time <= 15) playtimeRanges['15 min']++;
-        else if (time > 15 && time <= 30) playtimeRanges['30 min']++;
-        else if (time > 30 && time <= 45) playtimeRanges['45 min']++;
-        else if (time > 45 && time <= 60) playtimeRanges['60 min']++;
-        else if (time > 60 && time <= 90) playtimeRanges['90 min']++;
-        else if (time > 90 && time <= 240) playtimeRanges['240 min']++;
-        else playtimeRanges['+240 min']++;
+        if (time <= 15) playtimeRanges['15']++;
+        else if (time > 15 && time <= 30) playtimeRanges['30']++;
+        else if (time > 30 && time <= 45) playtimeRanges['45']++;
+        else if (time > 45 && time <= 60) playtimeRanges['60']++;
+        else if (time > 60 && time <= 90) playtimeRanges['90']++;
+        else if (time > 90 && time <= 240) playtimeRanges['240']++;
+        else playtimeRanges['+240']++;
       });
   
       const totalProducts = products.length;
@@ -164,7 +163,6 @@ export class GraphicsComponent implements OnInit, AfterViewInit {
           label: 'Distribución del Tiempo Mínimo de Juego',
           data: percentages,
           backgroundColor: [
-            // Asigna diferentes colores según prefieras
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
             'rgba(255, 206, 86, 0.2)',
@@ -174,7 +172,6 @@ export class GraphicsComponent implements OnInit, AfterViewInit {
             'rgba(201, 203, 207, 0.2)'
           ],
           borderColor: [
-            // Asigna diferentes colores según prefieras
             'rgba(255, 99, 132, 1)',
             'rgba(54, 162, 235, 1)',
             'rgba(255, 206, 86, 1)',
