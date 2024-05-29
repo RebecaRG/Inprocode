@@ -1,6 +1,6 @@
-# Frontend para la Aplicación de Juegos de Mesa 🎲
+# Inprocode - Frontend para la Aplicación de Juegos de Mesa 🎲
 
-Bienvenido/a al repositorio del frontend de nuestra aplicación de juegos de mesa. Este proyecto, desarrollado con **Angular 17**, te sumerge en el emocionante mundo de los juegos de mesa, utilizando una serie de tecnologías para mejorar tu experiencia con interacciones visuales y funcionalidades dinámicas.
+Repositorio de frontend de Inprocode para una aplicación de juegos de mesa. Este proyecto, desarrollado con **Angular 17**, se basa en el mundo de los juegos de mesa, probando una serie de tecnologías para mejorar la experiencia con interacciones visuales y funcionalidades dinámicas.
 
 ## 🚀 Empezando
 
@@ -48,7 +48,7 @@ Este proyecto está adornado con iconografía y temas relacionados con los juego
 
 ## 📚 Documentación adicional
 
-Para más información sobre cómo interactuar con el backend o detalles más profundos sobre cómo se construyó la aplicación, te recomendamos revisar el repositorio **`server-sprint8`** y su respectivo README.
+Para más información sobre cómo interactuar con el backend o detalles más profundos sobre cómo se construyó la aplicación, te recomendamos revisar el repositorio **`server-inprocode`** y su respectivo README.
 
 ## 🤝 Contribuciones
 
