@@ -53,3 +53,9 @@ Para más información sobre cómo interactuar con el backend o detalles más pr
 ## 🤝 Contribuciones
 
 ¡Tus contribuciones son bienvenidas! Si tienes ideas sobre cómo mejorar esta aplicación o deseas agregar nuevas funcionalidades, no dudes en crear un pull request o abrir un issue.
+
+## 📷 Ejemplos de la web
+
+![Home](/inprocode_fotos_web/inprocode_fotos_web_1.png)
+![Añadir juego](/inprocode_fotos_web/inprocode_fotos_web_2.png)
+![Calendario](/inprocode_fotos_web/inprocode_fotos_web_4.png)
